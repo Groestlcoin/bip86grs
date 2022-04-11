@@ -1,7 +1,7 @@
-const { networks } = require('bitcoinjs-lib')
+const { networks } = require('groestlcoinjs-lib')
 const bip39 = require('bip39')
 const bitcoinNetworks = { mainnet: networks.bitcoin, testnet: networks.testnet }
-const BIP32Factory = require('bip32').default
+const BIP32Factory = require('bip32grs').default
 const ecurve = require('ecurve')
 const secp256k1 = ecurve.getCurveByName('secp256k1')
 const schnorr = require('bip-schnorr')
@@ -18,12 +18,12 @@ const bip32 = BIP32Factory(ecc);
  * @param {boolean} isTestnet
  * @param {number} coinType - slip44
  * @param {object} network
- * @return 
+ * @return
  */
 function fromMnemonic(mnemonic, password = '', isTestnet, coinType, network) {
   this.seed = bip39.mnemonicToSeedSync(mnemonic, password)
   this.isTestnet = isTestnet === true
-  this.coinType = this.isTestnet ? 1 : coinType ? coinType : 0 // 0 is for Bitcoin and 1 is testnet for all coins
+  this.coinType = this.isTestnet ? 1 : coinType ? coinType : 17 // 17 is for Groestlcoin and 1 is testnet for all coins
   this.network = network || this.isTestnet ? bitcoinNetworks.testnet : bitcoinNetworks.mainnet
 }
 
@@ -223,7 +223,7 @@ const getP2TRAddress = (pubkey, testnet = false) => {
   const taprootPubkey = schnorr.taproot.taprootConstruct(pubKey)
   const words = bech32.toWords(taprootPubkey)
   words.unshift(1)
-  return bech32m.encode(testnet ? 'tb' : 'bc', words)
+  return bech32m.encode(testnet ? 'tgrs' : 'grs', words)
 }
 
 module.exports = {

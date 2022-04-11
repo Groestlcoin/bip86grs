@@ -1,32 +1,32 @@
 {
-  "name": "bip86",
+  "name": "bip86grs",
   "version": "0.0.2",
   "description": "BIP86 - Derives taproot addresses from seed, xprv/xpub and tprv/tpub in javascript",
   "main": "./src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Anderson-Juhasc/bip86"
+    "url": "https://github.com/Groestlcoin/bip86grs"
   },
   "scripts": {
     "test": "jest"
   },
   "keywords": [
-    "bitcoin",
+    "groestlcoin",
     "bip86",
     "taproot",
     "p2tr"
   ],
-  "author": "Anderson Juhasc",
+  "author": "Groestlcoin Developers",
   "license": "ISC",
   "dependencies": {
     "bech32": "2.0.0",
     "bip-schnorr": "^0.6.4",
-    "bip32": "^3.0.1",
+    "bip32grs": "^3.0.1",
     "bip39": "^3.0.4",
-    "bitcoin-address-validation": "^2.1.1",
-    "bitcoinjs-lib": "^6.0.0",
-    "bs58check": "^2.1.2",
-    "ecpair": "^1.0.1",
+    "groestlcoin-address-validation": "git+https://github.com/Groestlcoin/groestlcoin-address-validation.git",
+    "groestlcoinjs-lib": "^6.0.1",
+    "bs58grscheck": "^2.1.2",
+    "ecpairgrs": "^2.0.1",
     "ecurve": "^1.0.6",
     "tiny-secp256k1": "^1.1.6"
   },
